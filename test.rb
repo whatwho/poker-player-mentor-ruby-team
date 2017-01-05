@@ -41,4 +41,4 @@ test_json = <<TEST_JSON_STRING
 TEST_JSON_STRING
 
 p = Player.new
-p.bet_request( JSON.parse(test_json) )
+puts p.bet_request( JSON.parse(test_json) )
