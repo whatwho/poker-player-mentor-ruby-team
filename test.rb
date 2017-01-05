@@ -20,7 +20,16 @@ test_json = <<TEST_JSON_STRING
       "stack":1000,
       "status":"active",
       "bet":0,
-      "hole_cards":[],
+      "hole_cards":[
+                {
+                    "rank": "6",
+                    "suit": "hearts"
+                },
+                {
+                    "rank": "K",
+                    "suit": "spades"
+                }
+            ],
       "version":"Version name 2",
       "id":1
     }
@@ -41,4 +50,6 @@ test_json = <<TEST_JSON_STRING
 TEST_JSON_STRING
 
 p = Player.new
+puts p.get_rank("K")
+
 puts p.bet_request( JSON.parse(test_json) )
