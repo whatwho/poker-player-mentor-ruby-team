@@ -10,7 +10,7 @@ test_json = <<TEST_JSON_STRING
       "name":"Player 1",
       "stack":1000,
       "status":"active",
-      "bet":0,
+      "bet":50,
       "hole_cards":[],
       "version":"Version name 1",
       "id":0
@@ -19,7 +19,7 @@ test_json = <<TEST_JSON_STRING
       "name":"Player 2",
       "stack":1000,
       "status":"active",
-      "bet":0,
+      "bet":50,
       "hole_cards":[
                 {
                     "rank": "K",
@@ -42,7 +42,7 @@ test_json = <<TEST_JSON_STRING
   "orbits":0,
   "dealer":0,
   "community_cards":[],
-  "current_buy_in":0,
+  "current_buy_in":60,
   "in_action":1,
   "minimum_raise":240,
   "pot":0
