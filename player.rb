@@ -1,7 +1,7 @@
 
 class Player
 
-  VERSION = "Default Ruby folding player"
+  VERSION = "Killer Ruby Player 1.0"
 
   def get_rank(card)
   	rank = 0
@@ -33,8 +33,13 @@ class Player
 	  	in_action = game_state["in_action"]
 	  	# $stderr.puts( "in_action: " + in_action.to_s )
 	  	player_in_action = game_state["players"].select{ |list| list["id"] == in_action }[0]
+
+	  	# how many players we have
+		num_of_players = game_state["players"].select{ |list| list["status"] == "active" }.length
+		puts( "num_of_players: " + num_of_players.to_s )
+
 	  	# $stderr.puts( "player_in_action: " + player_in_action.to_s )
-	  	minimum_raise = game_state["current_buy_in"].to_f - player_in_action["bet"].to_f + game_state["minimum_raise"].to_f
+	  	minimum_raise = game_state["current_buy_in"].to_f - player_in_action["bet"].to_f
 	  	puts( "raise: " + minimum_raise.to_s )
 
 	  	total_ranks = self.get_ranks( player_in_action["hole_cards"] )
@@ -45,15 +50,22 @@ class Player
 	  	# 7-esnél nagyobb pár
 	  	# 2 ugyanolyan szinű
 	  	# kb. ha a total_ranks nagyobb mint 20
-	  	if total_ranks < 20
+	  	if total_ranks < 40
 	  		return 0
-	  	else
+
+	  	# 2 játékosnál már lehet emelgetni
+	  	elsif num_of_players <= 2
 
 	  		# leosztásból:
 		  	# magas lapok, egyszinűek
 		  	# sorvalószinűség a leosztásból
+			minimum_raise += game_state["minimum_raise"].to_f
 		  	minimum_raise += total_ranks
 
+		  	return minimum_raise.to_i
+		
+		# 2 játékos felett csak tartani
+		else
 		  	return minimum_raise.to_i
 		end
 

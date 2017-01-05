@@ -22,7 +22,7 @@ test_json = <<TEST_JSON_STRING
       "bet":0,
       "hole_cards":[
                 {
-                    "rank": "6",
+                    "rank": "K",
                     "suit": "hearts"
                 },
                 {
