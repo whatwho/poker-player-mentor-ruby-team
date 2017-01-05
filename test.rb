@@ -1,4 +1,5 @@
 require "./player"
+require 'json'
 
 # Testing
 
@@ -34,9 +35,10 @@ test_json = <<TEST_JSON_STRING
   "community_cards":[],
   "current_buy_in":0,
   "in_action":1,
+  "minimum_raise":240,
   "pot":0
 }
 TEST_JSON_STRING
 
 p = Player.new
-p.bet_request( test_json )
+p.bet_request( JSON.parse(test_json) )
